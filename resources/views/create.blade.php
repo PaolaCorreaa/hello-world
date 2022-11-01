@@ -2,7 +2,7 @@
 @section('title', 'Trainers Create')
 @section('content')
 
-<form class="form-group" method= "POST" action="/trainers" enctype="multipart/form-data">
+<!--<form class="form-group" method= "POST" action="/trainers" enctype="multipart/form-data">
     @csrf
       <div clas="from-group">
         <label for=""> Nombre: </label>
@@ -16,9 +16,13 @@
       <label for="">Avatar: </label>
         <input type="file" name="avatar">
       </div>
+<button type="submit" class="btn btn-primary">Guardar </button>-->
+{!!   Form::open(['route'=>'trainers.store','method'=>'POST','files'=>'true'])   !!}
+@include('form')
 
-<button type="submit" class="btn btn-primary">Guardar </button>
-</form>
+{{Form::submit('Guardar',['class'=>'btn btn-primary'])}}
+{!!Form::close()!!}
+@endsection 
 
 
 

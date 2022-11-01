@@ -2,7 +2,7 @@
 @section('title', 'Trainers Edit')
 @section('content')
 
-<form class="form-group" method= "POST" action="{{action('TrainerController@update', $trainer->id)}}" 
+<!--<form class="form-group" method= "POST" action="{{action('TrainerController@update', $trainer->id)}}" 
     enctype="multipart/form-data">
    @method('PUT')
    @csrf
@@ -20,5 +20,11 @@
     </div>
 
 <button type="submit" class="btn btn-primary">Editar </button>
-</form>
+</form>-->
+
+{!!Form::model($trainer,['route'=>['trainers.update', $trainer],
+  'method'=>'PUT','files'=>true]) !!}
+@include('form')
+{{Form::submit('Actualizar',['class'=>'btn btn-primary'])}}
+{!!Form::close()!!}
 @endsection 

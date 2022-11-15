@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controllers;
 use App\Trainer;
 
+//use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Dompdf\Domepdf;
+use Dompdf\Options;
+
 class TrainerController extends Controller
 {
     /**
@@ -15,6 +20,13 @@ class TrainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function pdf()
+    {
+        $trainers=Trainer::all();;
+        $pdf = PDF::loadView('pdf.listado',compact('trainers'));
+
+        return $pdf->download('listado.pdf');
+    }
     public function index()
     {
         //
